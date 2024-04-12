@@ -1,4 +1,11 @@
 package org.tododone.commands;
 
-public class DeleteCommandHandler {
+import org.tododone.todolist.CommandHandler;
+import org.tododone.todolist.TodoList;
+
+public class DeleteCommandHandler implements CommandHandler<DeleteCommand> {
+    @Override
+    public TodoList handle(DeleteCommand command) throws Exception {
+        command.validateArgument();
+    }
 }
