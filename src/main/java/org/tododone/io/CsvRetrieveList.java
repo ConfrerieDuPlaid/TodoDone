@@ -12,7 +12,6 @@ public class CsvRetrieveList implements RetrieveTodoList {
 
     @Override
     public TodoList getTodoList() throws Exception {
-        // TODO
         return TodoList.of(this.csvReader.readTasks());
     }
 }

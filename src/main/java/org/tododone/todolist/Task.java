@@ -28,4 +28,11 @@ public class Task {
     public String toCSVString() {
         return String.format("%s,%s,%d", creation_date.toString(), content, this.done.compareTo(false));
     }
+
+    public String toString() {
+        return String.format("[%c] %s %s",
+                done ? 'X' : ' ',
+                content,
+                timeElapsed().toString());
+    }
 }

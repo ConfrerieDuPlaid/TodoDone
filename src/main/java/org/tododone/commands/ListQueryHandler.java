@@ -14,6 +14,8 @@ public class ListQueryHandler implements CommandHandler<ListQuery> {
 
     @Override
     public TodoList handle(ListQuery command) throws Exception {
-        return this.retrieveTodoList.getTodoList();
+        TodoList todoList = retrieveTodoList.getTodoList();
+        System.out.println(todoList);
+        return todoList;
     }
 }

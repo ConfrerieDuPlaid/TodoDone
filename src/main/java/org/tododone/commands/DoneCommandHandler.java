@@ -16,11 +16,12 @@ public class DoneCommandHandler implements CommandHandler<DoneCommand> {
     @Override
     public TodoList handle(DoneCommand command) throws Exception {
         command.validateArgument();
+        int index = command.index() - 1;
         final var todoList = this.retrieveTodoList.getTodoList();
         var tasks = todoList.getTasks();
-        var task = tasks.get(command.index());
+        var task = tasks.get(index);
         task.setDone(true);
-        tasks.set(command.index(), task);
+        tasks.set(index, task);
         final var newTodoList = TodoList.of(tasks);
         this.saveTodoList.save(newTodoList);
         return newTodoList;

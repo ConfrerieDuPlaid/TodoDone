@@ -22,7 +22,7 @@ public class CSVReader {
             BufferedReader reader = new BufferedReader(input);
             do {
                 task = this.parseLineToTask(reader);
-                tasks.add(task);
+                if (task != null) tasks.add(task);
             } while (task != null);
             reader.close();
         } catch (Exception e) {
