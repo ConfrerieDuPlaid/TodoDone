@@ -22,17 +22,9 @@ public class TodoList {
         tasks.add(task);
     }
 
-    public void markTaskAsDone(int index) {
-        isIndexInTodoList(index);
-        tasks.get(index).setDone(true);
-    }
 
     public List<Task> getTasks() {
         return tasks;
-    }
-
-    public void handleCommand(Command command){
-
     }
 
     private void isIndexInTodoList(Integer index) throws IndexOutOfBoundsException{
