@@ -14,16 +14,12 @@ public class TodoList {
     }
 
     public static TodoList of(List<Task> tasks) {
+        System.out.println(tasks.size());
         return new TodoList(tasks);
     }
 
     public void addTask(Task task) {
         tasks.add(task);
-    }
-
-    public void removeTask(int index) {
-        isIndexInTodoList(index);
-        tasks.remove(index);
     }
 
     public void markTaskAsDone(int index) {

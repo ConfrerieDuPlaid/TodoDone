@@ -2,8 +2,6 @@ package org.tododone.io;
 
 import org.tododone.todolist.TodoList;
 
-import java.util.ArrayList;
-
 public class CsvRetrieveList implements RetrieveTodoList {
 
     private final CSVReader csvReader;
@@ -15,6 +13,6 @@ public class CsvRetrieveList implements RetrieveTodoList {
     @Override
     public TodoList getTodoList() throws Exception {
         // TODO
-        return TodoList.of(new ArrayList<>());
+        return TodoList.of(this.csvReader.readTasks());
     }
 }
