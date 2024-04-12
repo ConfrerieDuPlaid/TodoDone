@@ -15,7 +15,7 @@ public class Main {
         final var commandParser = new CommandParser(args);
         final var command = commandParser.parse();
         final var commandHandler = commandHandlerMap.get(command.getClass());
-        commandHandler.handle(command);
+        var todoList = commandHandler.handle(command);
     }
 
     private static Map<Class<? extends Command>, CommandHandler> getClassCommandHandlerMap(CSVReader csvReader, CSVWriter csvWriter) {

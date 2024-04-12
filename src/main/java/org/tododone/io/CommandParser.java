@@ -1,8 +1,6 @@
 package org.tododone.io;
 
-import org.tododone.commands.AddCommand;
-import org.tododone.commands.Command;
-import org.tododone.commands.ListQuery;
+import org.tododone.commands.*;
 
 public class CommandParser {
     public final String command;
@@ -28,7 +26,9 @@ public class CommandParser {
         return switch (this.command) {
             case "add" -> new AddCommand(this.argument);
             case "list" -> new ListQuery();
-            default -> null;
+            case "delete" -> new DeleteCommand(Integer.parseInt(this.argument));
+            case "done" -> new DoneCommand(Integer.parseInt(this.argument));
+            default -> throw new IllegalArgumentException("Invalid command");
         };
     }
 }

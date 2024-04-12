@@ -20,8 +20,10 @@ public class AddCommandHandler implements CommandHandler<AddCommand> {
     public TodoList handle(AddCommand command) throws Exception {
         command.validateArgument();
         TodoList todoList = this.todoListQuery.getTodoList();
-        todoList.addTask(Task.create(command.content()));
-        this.saveTodoList.save(todoList);
-        return todoList;
+        var tasks = todoList.getTasks();
+        tasks.add(Task.create(command.content()));
+        var newTodoList = TodoList.of(tasks);
+        this.saveTodoList.save(newTodoList);
+        return newTodoList;
     }
 }
