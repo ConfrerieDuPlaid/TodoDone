@@ -1,8 +1,9 @@
 package org.tododone;
 
-import org.tododone.commands.*;
+import org.tododone.commands.AddCommand;
+import org.tododone.commands.AddCommandHandler;
+import org.tododone.commands.Command;
 import org.tododone.io.TodoListQuery;
-import org.tododone.todolist.CommandHandler;
 import org.tododone.todolist.TodoList;
 
 import java.util.Map;
@@ -15,11 +16,8 @@ public class Main {
                 return null;
             }
         };
-        Map<Command, CommandHandler> commandHandlerMap = Map.of(
-                AddCommand.class, new AddCommandHandler(todoListQuery),
-                DoneCommand.class, new DoneCommandHandler(),
-                ListQuery.class, new ListQueryHandler(),
-                DeleteCommand.class, new DeleteCommandHandler()
+        Map<Class<? extends Command>, Object> commandHandlerMap = Map.of(
+                AddCommand.class, new AddCommandHandler(todoListQuery)
         );
     }
 }

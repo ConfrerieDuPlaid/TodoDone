@@ -13,6 +13,10 @@ public class Task {
         this.done = done;
     }
 
+    public static Task create(String content) {
+        return new Task(LocalDateTime.now(), content, false);
+    }
+
     public TimeElapsed timeElapsed() {
         return new TimeElapsed(this.creation_date);
     }
