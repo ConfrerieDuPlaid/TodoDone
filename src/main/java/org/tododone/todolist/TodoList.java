@@ -14,6 +14,7 @@ public class TodoList {
     }
 
     public static TodoList of(List<Task> tasks) {
+        System.out.println(tasks.size());
         return new TodoList(tasks);
     }
 

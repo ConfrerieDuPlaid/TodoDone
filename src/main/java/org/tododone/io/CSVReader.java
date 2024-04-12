@@ -8,32 +8,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVReader {
-    private final BufferedReader reader;
+    private final String filename;
 
     public CSVReader(String filename) throws Exception {
-        try {
-            InputStream inputStream = new FileInputStream(filename);
-            this.reader = new BufferedReader(new InputStreamReader(inputStream));
-        } catch (IOException e) {
-            throw new Exception("Error opening file " + filename);
-        }
+        this.filename = filename;
     }
 
     public List<Task> readTasks() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>(List.of());
         Task task = null;
         try {
+            FileReader input = new FileReader(this.filename);
+            BufferedReader reader = new BufferedReader(input);
             do {
-                task = this.parseLineToTask();
+                task = this.parseLineToTask(reader);
                 tasks.add(task);
             } while (task != null);
+            reader.close();
         } catch (Exception e) {
             throw new IOException("Error reading file : " + e.getMessage());
         }
         return tasks;
     }
 
-    public Task parseLineToTask() throws IOException {
+    public Task parseLineToTask(BufferedReader reader) throws IOException {
         String l = reader.readLine();
         if (l == null || l.trim().isEmpty()) return null;
         String[] taskData = l.split(",");
