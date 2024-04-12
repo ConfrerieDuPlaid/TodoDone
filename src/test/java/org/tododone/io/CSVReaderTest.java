@@ -1,12 +1,15 @@
 package org.tododone.io;
 
 import org.junit.jupiter.api.Test;
+import org.tododone.todolist.Task;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CSVReaderTest {
     private final String testFilePath = "./resources/test.csv";
-    private final String expectedLine = "12/11/2001,content,0";
+    private final String expectedLine = "2024-04-12T19:02:27.823102,content,false";
 
     @Test()
     public void testInitCSVReader() {
@@ -22,9 +25,8 @@ class CSVReaderTest {
     public void testReadLine() {
         try {
             CSVReader reader = new CSVReader(this.testFilePath);
-            reader.readTasks();
-            System.out.println(reader.parseLineToTask());
-            assertEquals(this.expectedLine);
+            List<Task> tasks = reader.readTasks();
+            assertEquals(this.expectedLine, tasks.get(0).toCSVString());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
