@@ -1,16 +1,19 @@
 package org.tododone.commands;
 
-import org.tododone.io.TodoListQuery;
+import org.tododone.io.RetrieveTodoList;
+import org.tododone.io.SaveTodoList;
 import org.tododone.todolist.CommandHandler;
 import org.tododone.todolist.Task;
 import org.tododone.todolist.TodoList;
 
 public class AddCommandHandler implements CommandHandler<AddCommand> {
 
-    private final TodoListQuery todoListQuery;
+    private final RetrieveTodoList todoListQuery;
+    private final SaveTodoList saveTodoList;
 
-    public AddCommandHandler(TodoListQuery todoListQuery) {
+    public AddCommandHandler(RetrieveTodoList todoListQuery, SaveTodoList saveTodoList) {
         this.todoListQuery = todoListQuery;
+        this.saveTodoList = saveTodoList;
     }
 
     @Override
@@ -18,6 +21,7 @@ public class AddCommandHandler implements CommandHandler<AddCommand> {
         command.validateArgument();
         TodoList todoList = this.todoListQuery.getTodoList();
         todoList.addTask(Task.create(command.content()));
+        this.saveTodoList.save(todoList);
         return todoList;
     }
 }

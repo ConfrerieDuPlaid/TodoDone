@@ -1,18 +1,34 @@
 package org.tododone.io;
 
+import org.tododone.commands.AddCommand;
+import org.tododone.commands.Command;
+import org.tododone.commands.ListQuery;
+
 public class CommandParser {
     public final String command;
     public final String argument;
 
     public CommandParser(String[] args) throws Exception {
-        if (args.length >= 1 && args.length <= 2) {
+        if (args.length < 1 || args.length > 2) {
             throw new Exception("Expected one (1) or two (2) arguments");
         }
         if (args[0].isEmpty()) {
             throw new Exception("Command can't be empty");
         }
         this.command = args[0];
+        if(args.length > 1) {
+            this.argument = args[1];
+        } else {
+            this.argument = null;
+        }
 
-        this.argument = args[1];
+    }
+
+    public Command parse() {
+        return switch (this.command) {
+            case "add" -> new AddCommand(this.argument);
+            case "list" -> new ListQuery();
+            default -> null;
+        };
     }
 }

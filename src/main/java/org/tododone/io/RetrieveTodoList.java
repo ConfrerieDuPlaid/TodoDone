@@ -2,6 +2,6 @@ package org.tododone.io;
 
 import org.tododone.todolist.TodoList;
 
-public interface TodoListQuery {
+public interface RetrieveTodoList {
     TodoList getTodoList() throws Exception;
 }

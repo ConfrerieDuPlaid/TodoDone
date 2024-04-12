@@ -1,29 +1,24 @@
 package org.tododone;
 
-import org.tododone.commands.AddCommand;
-import org.tododone.commands.AddCommandHandler;
-import org.tododone.commands.Command;
-import org.tododone.io.TodoListQuery;
+import org.tododone.commands.*;
+import org.tododone.io.*;
 import org.tododone.todolist.CommandHandler;
-import org.tododone.todolist.Task;
-import org.tododone.todolist.TodoList;
-
-import java.time.LocalDateTime;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
-        Task task = new Task(LocalDateTime.now(), "content", false);
-        System.out.println(task.toCSVString());
-
-        TodoListQuery todoListQuery = new TodoListQuery() {
-            @Override
-            public TodoList getTodoList() throws Exception {
-                return null;
-            }
-        };
+    public static void main(String[] args) throws Exception {
+        final var saveFileName = "./todo.csv";
+        CSVReader csvReader = new CSVReader(saveFileName);
+        CSVWriter csvWriter = new CSVWriter(saveFileName);
+        RetrieveTodoList retrieveTodoList = new CsvRetrieveList(csvReader);
+        SaveTodoList saveTodoList = new CsvSaveTodoList(csvWriter);
         Map<Class<? extends Command>, CommandHandler> commandHandlerMap = Map.of(
-                AddCommand.class, new AddCommandHandler(todoListQuery)
+                AddCommand.class, new AddCommandHandler(retrieveTodoList, saveTodoList),
+                ListQuery.class, new ListQueryHandler(retrieveTodoList)
         );
+        final var commandParser = new CommandParser(args);
+        final var command = commandParser.parse();
+        final var commandHandler = commandHandlerMap.get(command.getClass());
+        commandHandler.handle(command);
     }
 }
