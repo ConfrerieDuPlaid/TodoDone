@@ -13,7 +13,12 @@ public class Task {
         this.done = done;
     }
 
+<<<<<<< HEAD
     public TimeElapsed timeElapsed() {
         return new TimeElapsed(this.creation_date);
+=======
+    public void setDone(boolean isDone) {
+        done = isDone;
+>>>>>>> c41dbb6 (add handler)
     }
 }
