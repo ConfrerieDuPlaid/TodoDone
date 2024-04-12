@@ -1,0 +1,6 @@
+
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ÞñÕš8Àµ€›í1
+j
+java:S2095"HUse try-with-resources or close this "FileReader" in a "finally" clause.(Ú‘ó•øÿÿÿÿ8öµ€›í1
+Ž
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(ÞñÕš8þµ€›í1
