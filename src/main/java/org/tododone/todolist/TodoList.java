@@ -35,7 +35,7 @@ public class TodoList {
         return tasks;
     }
 
-    public handleCommand(Command command){
+    public void handleCommand(Command command){
 
     }
 

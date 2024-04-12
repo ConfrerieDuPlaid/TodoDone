@@ -1,4 +1,4 @@
-package org.tododone.commandparser;
+package org.tododone.io;
 
 public class CommandParser {
     public final String command;

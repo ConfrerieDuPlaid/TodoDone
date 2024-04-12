@@ -21,4 +21,5 @@ Toutes les tâches prennent un argument, sauf `list`, qui n'en prend pas. Cepend
 ### Todo list
 La todo list est séparée en deux classes : `TodoList` et `Task`. 
 `TodoList` contient une liste de `Task`.
-`Task` contient le contenu de la tâche, sa date de création, et un booléen pour savoir si elle est faite ou non. La durée écoulée depuis la création est calculée à la volée.
+`Task` contient le contenu de la tâche, sa date de création, et un booléen pour savoir si elle est faite ou non.
+Une classe `TimeElapsed` calcule et peut afficher la durée écoulée depuis la création de la tâche. Cette durée n'est pas stockée.
