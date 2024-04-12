@@ -1,6 +1,11 @@
 package org.tododone.io;
 
+import org.tododone.todolist.Task;
+
 import java.io.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CSVReader {
     private final BufferedReader reader;
@@ -15,21 +20,25 @@ public class CSVReader {
         }
     }
 
-    public void readLine() throws Exception {
+    public List<Task> readTasks() throws IOException {
+        ArrayList<Task> tasks = new ArrayList<>(List.of());
+        Task task = null;
         try {
-            String l = reader.readLine();
-            this.line = l != null ? l : "";
-
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading file");
+            do {
+                task = this.parseLineToTask();
+                tasks.add(task);
+            } while (task != null);
+        } catch (Exception e) {
+            throw new IOException("Error reading file : " + e.getMessage());
         }
+        return tasks;
     }
 
-//    public Task[] parseIntLine() throws Exception {
-//        if (this.line.isEmpty()) throw new Exception("Empty line");
-//        String[] taskData = this.line.split(",");
-//        if (taskData.length != 3) throw new Exception("Invalid task data");
-////        return new Task[] {new Task(new Local(taskData[0].trim()), taskData[1].trim(), taskData[2].trim())};
-////        return Arrays.stream(this.line.split(",")).map(String::trim).mapToInt(Integer::parseInt).toArray();
-//    }
+    public Task parseLineToTask() throws IOException {
+        String l = reader.readLine();
+        if (l == null || l.trim().isEmpty()) return null;
+        String[] taskData = l.split(",");
+        if (taskData.length != 3) return null;
+        return new Task(LocalDateTime.parse(taskData[0]), taskData[1].trim(), Integer.parseInt(taskData[2]) == 1);
+    }
 }

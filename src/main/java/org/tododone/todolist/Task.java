@@ -24,4 +24,8 @@ public class Task {
     public void setDone(boolean isDone) {
         done = isDone;
     }
+
+    public String toCSVString() {
+        return String.format("%s,%s,%s", creation_date.toString(), content, done);
+    }
 }
