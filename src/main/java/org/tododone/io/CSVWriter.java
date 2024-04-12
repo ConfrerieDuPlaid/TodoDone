@@ -5,6 +5,7 @@ import org.tododone.todolist.Task;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class CSVWriter {
     private final BufferedWriter writer;
@@ -17,6 +18,16 @@ public class CSVWriter {
         } catch (Exception e) {
             throw new Exception("Error opening file " + filename);
         }
+    }
+
+    public void writeTaskList(List<Task> tasks) throws IOException {
+        tasks.forEach(task -> {
+            try {
+                this.writeTask(task);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void writeTask(Task task) throws IOException {

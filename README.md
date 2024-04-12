@@ -17,6 +17,8 @@ Les tâches sont stockées en CSV dans un fichier sur l'ordinateur, étant donn�
 Les commandes sont en premier lieu traitées par un `CommandParser` pour vérifier leur format.
 Elles implémentent l'interface `Command` et sont séparées en Query et Command, les premières n'ayant pas d'effet sur le système, les secondes en ayant un.
 Toutes les tâches prennent un argument, sauf `list`, qui n'en prend pas. Cependant, elle implémente également l'interface `Command` pour la rendre modulable, dans le cas où on voudrait par exemple plus tard vouloir filtrer par les tâches faites ou les tâches non faites.
+Un handler permet d'exécuter les commandes.
+
 
 ### Todo list
 La todo list est séparée en deux classes : `TodoList` et `Task`. 
