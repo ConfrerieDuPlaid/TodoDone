@@ -10,15 +10,23 @@ public class Main {
         final var saveFileName = "./todo.csv";
         CSVReader csvReader = new CSVReader(saveFileName);
         CSVWriter csvWriter = new CSVWriter(saveFileName);
-        RetrieveTodoList retrieveTodoList = new CsvRetrieveList(csvReader);
-        SaveTodoList saveTodoList = new CsvSaveTodoList(csvWriter);
-        Map<Class<? extends Command>, CommandHandler> commandHandlerMap = Map.of(
-                AddCommand.class, new AddCommandHandler(retrieveTodoList, saveTodoList),
-                ListQuery.class, new ListQueryHandler(retrieveTodoList)
-        );
+        Map<Class<? extends Command>, CommandHandler> commandHandlerMap = getClassCommandHandlerMap(csvReader, csvWriter);
+
         final var commandParser = new CommandParser(args);
         final var command = commandParser.parse();
         final var commandHandler = commandHandlerMap.get(command.getClass());
         commandHandler.handle(command);
+    }
+
+    private static Map<Class<? extends Command>, CommandHandler> getClassCommandHandlerMap(CSVReader csvReader, CSVWriter csvWriter) {
+        RetrieveTodoList retrieveTodoList = new CsvRetrieveList(csvReader);
+        SaveTodoList saveTodoList = new CsvSaveTodoList(csvWriter);
+        Map<Class<? extends Command>, CommandHandler> commandHandlerMap = Map.of(
+                AddCommand.class, new AddCommandHandler(retrieveTodoList, saveTodoList),
+                ListQuery.class, new ListQueryHandler(retrieveTodoList),
+                DeleteCommand.class, new DeleteCommandHandler(retrieveTodoList, saveTodoList),
+                DoneCommand.class, new DoneCommandHandler(retrieveTodoList, saveTodoList)
+        );
+        return commandHandlerMap;
     }
 }

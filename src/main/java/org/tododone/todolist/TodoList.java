@@ -21,11 +21,6 @@ public class TodoList {
         tasks.add(task);
     }
 
-    public void removeTask(int index) {
-        isIndexInTodoList(index);
-        tasks.remove(index);
-    }
-
     public void markTaskAsDone(int index) {
         isIndexInTodoList(index);
         tasks.get(index).setDone(true);
