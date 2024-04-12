@@ -14,22 +14,10 @@ public class TodoList {
     }
 
     public static TodoList of(List<Task> tasks) {
-        System.out.println(tasks.size());
         return new TodoList(tasks);
     }
 
-    public void addTask(Task task) {
-        tasks.add(task);
-    }
-
-
     public List<Task> getTasks() {
         return tasks;
-    }
-
-    private void isIndexInTodoList(Integer index) throws IndexOutOfBoundsException{
-        if (index < 0 || index >= tasks.size()) {
-            throw new IndexOutOfBoundsException("Index out of bounds");
-        }
     }
 }
