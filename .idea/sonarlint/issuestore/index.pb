@@ -1,0 +1,21 @@
+
+o
+?src/test/java/org/tododone/commandparser/CommandParserTest.java,c/1/c1dfbdb0d2e2d8376210c242e56dee3d927e1e1d
+d
+4src/main/java/org/tododone/todolist/TimeElapsed.java,8/5/8525f4d060fd1c8c32c16885187cba6efdf1b33b
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+h
+8src/test/java/org/tododone/todolist/TimeElapsedTest.java,2/c/2caeaf71130e33e622039ef82a3f9ef4585e96df
+a
+1src/main/java/org/tododone/todolist/TodoList.java,2/8/286a783e33aecfe5fcd7f926e550087bce40eff7
+]
+-src/main/java/org/tododone/todolist/Task.java,6/b/6b76a27257d9e12928025dbf88a100a1ce298878
+T
+$src/main/java/org/tododone/Main.java,e/8/e85bf1c7ecc71bf2bbd2e478fd3a08b77d6ce673
+j
+:src/main/java/org/tododone/commands/AddCommandHandler.java,2/2/222a699119bf9ca372226e893ff6a455fa99c2d2
+`
+0src/main/java/org/tododone/io/TodoListQuery.java,2/0/2024453eb741c7dd8556f0e9414095839bace9dd
+m
+=src/main/java/org/tododone/commands/DeleteCommandHandler.java,b/d/bdcf1388ba9e746616faaf385106d722b4a8898a

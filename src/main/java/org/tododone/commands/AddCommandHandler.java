@@ -5,6 +5,8 @@ import org.tododone.todolist.CommandHandler;
 import org.tododone.todolist.Task;
 import org.tododone.todolist.TodoList;
 
+import java.util.ArrayList;
+
 public class AddCommandHandler implements CommandHandler<AddCommand> {
 
     private final TodoListQuery todoListQuery;
@@ -16,8 +18,12 @@ public class AddCommandHandler implements CommandHandler<AddCommand> {
     @Override
     public TodoList handle(AddCommand command) throws Exception {
         command.validateArgument();
+<<<<<<< Updated upstream
         TodoList todoList = this.todoListQuery.getTodoList();
         todoList.addTask(Task.create(command.content()));
         return todoList;
+=======
+        return TodoList.of(new ArrayList<>());
+>>>>>>> Stashed changes
     }
 }
