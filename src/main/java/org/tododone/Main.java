@@ -1,4 +1,4 @@
-package org.example;
+package org.tododone;
 
 public class Main {
     public static void main(String[] args) {
