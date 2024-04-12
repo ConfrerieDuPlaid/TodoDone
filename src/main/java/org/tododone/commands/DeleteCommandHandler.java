@@ -17,9 +17,10 @@ public class DeleteCommandHandler implements CommandHandler<DeleteCommand> {
     @Override
     public TodoList handle(DeleteCommand command) throws Exception {
         command.validateArgument();
+        int index = command.index() - 1;
         final var todoList = this.retrieveTodoList.getTodoList();
         var tasks = todoList.getTasks();
-        tasks.remove(command.index());
+        tasks.remove(index);
         final var newTodoList = TodoList.of(tasks);
         this.saveTodoList.save(newTodoList);
         return newTodoList;
