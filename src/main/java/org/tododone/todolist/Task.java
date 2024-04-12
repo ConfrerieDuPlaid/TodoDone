@@ -12,4 +12,8 @@ public class Task {
         this.content = content;
         this.done = done;
     }
+
+    public TimeElapsed timeElapsed() {
+        return new TimeElapsed(this.creation_date);
+    }
 }
