@@ -14,7 +14,6 @@ public class CSVWriter {
         try {
             FileWriter file = new FileWriter(filename);
             this.writer = new BufferedWriter(file);
-            throw new UnsupportedOperationException("Not implemented yet");
         } catch (Exception e) {
             throw new Exception("Error opening file " + filename);
         }
@@ -25,13 +24,13 @@ public class CSVWriter {
             try {
                 this.writeTask(task);
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException("Error writing task to file");
             }
         });
+        this.writer.close();
     }
 
     public void writeTask(Task task) throws IOException {
         this.writer.write(task.toCSVString() + '\n');
-        throw new UnsupportedOperationException("Not implemented yet");
     }
 }

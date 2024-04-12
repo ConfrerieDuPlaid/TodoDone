@@ -26,6 +26,6 @@ public class Task {
     }
 
     public String toCSVString() {
-        return String.format("%s,%s,%s", creation_date.toString(), content, done);
+        return String.format("%s,%s,%d", creation_date.toString(), content, this.done.compareTo(false));
     }
 }
