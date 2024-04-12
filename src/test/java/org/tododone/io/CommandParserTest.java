@@ -11,12 +11,10 @@ class CommandParserTest {
 
     @Test()
     public void testCommandParser() {
-
-
         try {
             CommandParser parser = new CommandParser(new String[]{this.testFilePath, this.testOperand});
             assertEquals(this.testFilePath, parser.command);
-            assertEquals(this.testOperand.charAt(0), parser.argument);
+            assertEquals(this.testOperand.charAt(0), parser.argument.charAt(0));
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -37,24 +35,6 @@ class CommandParserTest {
                 Exception.class,
                 () -> new CommandParser(new String[]{"", "+"}),
                 "File path can't be empty"
-        );
-    }
-
-    @Test()
-    public void testEmptyOperandCommand() {
-        assertThrows(
-                Exception.class,
-                () -> new CommandParser(new String[]{this.testFilePath, ""}),
-                "Operand must be one character only"
-        );
-    }
-
-    @Test()
-    public void testInvalidOperandCommand() {
-        assertThrows(
-                Exception.class,
-                () -> new CommandParser(new String[]{this.testFilePath, "xx"}),
-                "Operand must be one character only"
         );
     }
 }

@@ -1,8 +1,10 @@
-package org.tododone.commands;
+package org.tododone.commands.done;
+
+import org.tododone.commands.Command;
 
 import java.util.Objects;
 
-public record DeleteCommand(Integer index) implements Command {
+public record DoneCommand(Integer index) implements Command {
     @Override
     public void validateArgument() throws Exception {
         if(Objects.requireNonNull(index) <= 0) {

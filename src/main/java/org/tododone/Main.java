@@ -1,6 +1,14 @@
 package org.tododone;
 
 import org.tododone.commands.*;
+import org.tododone.commands.add.AddCommand;
+import org.tododone.commands.add.AddCommandHandler;
+import org.tododone.commands.delete.DeleteCommand;
+import org.tododone.commands.delete.DeleteCommandHandler;
+import org.tododone.commands.done.DoneCommand;
+import org.tododone.commands.done.DoneCommandHandler;
+import org.tododone.commands.list.ListQuery;
+import org.tododone.commands.list.ListQueryHandler;
 import org.tododone.io.*;
 import org.tododone.todolist.CommandHandler;
 import java.util.Map;

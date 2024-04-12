@@ -1,8 +1,10 @@
-package org.tododone.commands;
+package org.tododone.commands.add;
+
+import org.tododone.commands.Command;
 
 import java.util.Objects;
 
-public record AddCommand(String content) implements Command{
+public record AddCommand(String content) implements Command {
 
     @Override
     public void validateArgument() throws Exception {

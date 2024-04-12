@@ -1,4 +1,4 @@
-package org.tododone.commands;
+package org.tododone.commands.done;
 
 import org.tododone.io.RetrieveTodoList;
 import org.tododone.io.SaveTodoList;

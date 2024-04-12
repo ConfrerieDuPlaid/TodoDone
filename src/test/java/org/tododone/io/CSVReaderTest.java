@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CSVReaderTest {
     private final String testFilePath = "./resources/test.csv";
-    private final String expectedLine = "2024-04-12T19:02:27.823102,content,false";
+    private final String expectedLine = "2024-04-12T19:02:27.823102,content,0";
 
     @Test()
     public void testInitCSVReader() {
@@ -18,7 +18,7 @@ class CSVReaderTest {
 
     @Test()
     public void testInvalidFilePath() {
-        assertThrows(Exception.class, () -> new CSVReader("invalid.csv"), "Error opening file invalid.csv");
+        assertThrows(Exception.class, () -> new CSVReader("invalid.csv").readTasks(), "Error opening file invalid.csv");
     }
 
     @Test()

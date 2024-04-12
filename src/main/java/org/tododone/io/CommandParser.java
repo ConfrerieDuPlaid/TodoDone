@@ -1,6 +1,10 @@
 package org.tododone.io;
 
 import org.tododone.commands.*;
+import org.tododone.commands.add.AddCommand;
+import org.tododone.commands.delete.DeleteCommand;
+import org.tododone.commands.done.DoneCommand;
+import org.tododone.commands.list.ListQuery;
 
 public class CommandParser {
     public final String command;

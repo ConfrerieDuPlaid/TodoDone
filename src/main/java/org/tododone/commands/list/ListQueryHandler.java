@@ -1,4 +1,4 @@
-package org.tododone.commands;
+package org.tododone.commands.list;
 
 import org.tododone.io.RetrieveTodoList;
 import org.tododone.todolist.CommandHandler;
