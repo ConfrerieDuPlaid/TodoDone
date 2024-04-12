@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CSVReader {
     private final BufferedReader reader;
-    private String line = "";
 
     public CSVReader(String filename) throws Exception {
         try {
